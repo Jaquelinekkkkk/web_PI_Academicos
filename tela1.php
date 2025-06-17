@@ -1,3 +1,11 @@
+<?php
+
+
+$email = $_GET['email'] ?? '';
+$codigo = $_GET['codigo'] ?? '';
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -51,9 +59,15 @@
 </head>
 <body>
   <div class="container">
-    <h2>Insira o código que enviamos para seu e-mail:</h2>
+    <h2>Insira sua nova senha</h2>
     <form action="validar_codigo.php" method="post">
-      <input type="text" name="codigo" placeholder="Código de recuperação" required />
+      <input type="text" name="senha" placeholder="Nova Senha" required />
+
+      <input type="hidden" id="codigo" name="codigo" value="<?php echo $codigo; ?>">
+      <input type="hidden" id="email" name="email" value="<?php echo $email; ?>">
+      <input type="text" name="confirmar_senha" placeholder="Confirmar Senha" required />
+
+
       <div class="buttons">
         <button type="button" onclick="window.location.href='tela_login.php'">Voltar</button>
         <button type="submit">Enviar</button>
