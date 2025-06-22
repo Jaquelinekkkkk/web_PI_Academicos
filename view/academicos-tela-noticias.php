@@ -116,6 +116,16 @@ grid-template-rows: repeat(auto-fill, 1fr);
     background-color: rgba(56, 102, 65);
 }
 
+#post img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 10px;
+
+}
+
+
 #legenda {
     font-weight: bold;
     margin-top: -30px;
@@ -213,6 +223,8 @@ grid-template-rows: repeat(auto-fill, 1fr);
 </style>
 <body>
     
+<?php include_once("../model/noticiaDAO.php"); 
+$noticias = buscarNoticias()?>
 
      <!--Responsividade com as dimensões do SAMSUNG Galaxy A51/71, iPad Air, Nest Hub Max-->
      
@@ -236,7 +248,7 @@ grid-template-rows: repeat(auto-fill, 1fr);
                 <div class="linha"></div>
                 <div>Notícias</div>
                 <div class="linha"></div>
-                <div >Câmpus</div>
+                <div ><a href="../telaPrincipal.html" style="text-decoration: none;">Câmpus</a></div>
                 <div class="linha"></div>
                 <div style="white-space: nowrap;"><span>Áreas de conhecimento</span></div>
             </div>
@@ -255,53 +267,16 @@ grid-template-rows: repeat(auto-fill, 1fr);
              </div>
              <div id="noticias">
 
+                <?php foreach ($noticias as $noticia): ?>
                 <div><div id="post">
-                    <img src="../imagens/Foto.png" alt="">
-                </div><p id="legenda">Título: **************************** 
-                    <br> xx/xx/xxxx</p>
+                    <img src="data:image/jpeg;base64,<?= base64_encode($noticia['arquivoFoto']) ?>" alt="Imagem da notícia">
+                </div><p id="legenda">Título: <?= htmlspecialchars($noticia['titulo']) ?> 
+                    <br> 
+                    <?= date('d/m/y', strtotime($noticia['dataPublicacao'])) ?></p>
                 </div>
+                <?php endforeach; ?>
 
-                <div><div id="post">
-                    <img id="foto"src="../imagens/Foto.png" alt="">
-                </div><p id="legenda">Título: **************************** 
-                    <br> xx/xx/xxxx</p>
-                </div>
-
-                <div><div id="post">
-                    <img src="../imagens/Foto.png" alt="">
-                </div><p id="legenda">Título: **************************** 
-                    <br> xx/xx/xxxx</p>
-                </div>
-
-                <div><div id="post">
-                    <img src="../imagens/Foto.png" alt="">
-                </div><p id="legenda">Título: **************************** 
-                    <br> xx/xx/xxxx</p>
-                </div>
-
-                <div><div id="post">
-                    <img src="../imagens/Foto.png" alt="">
-                </div><p id="legenda">Título: **************************** 
-                    <br> xx/xx/xxxx</p>
-                </div>
-
-                <div><div id="post">
-                    <img id="foto"src="../imagens/Foto.png" alt="">
-                </div><p id="legenda">Título: **************************** 
-                    <br> xx/xx/xxxx</p>
-                </div>
-
-                <div><div id="post">
-                    <img src="../imagens/Foto.png" alt="">
-                </div><p id="legenda">Título: **************************** 
-                    <br> xx/xx/xxxx</p>
-                </div>
-
-                <div><div id="post">
-                    <img src="../imagens/Foto.png" alt="">
-                </div><p id="legenda">Título: **************************** 
-                    <br> xx/xx/xxxx</p>
-                </div>
+                
                 
              </div>
              </div>
