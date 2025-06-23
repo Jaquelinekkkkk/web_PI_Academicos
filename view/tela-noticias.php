@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notícias</title>
+    <title>Document</title>
 </head>
 <style>   
 body{
@@ -90,10 +90,7 @@ h3{
     background-color:rgba(56, 102, 65);
 }
 
-#inferior{
 
-    background-color: rgb(255, 255, 255);
-}
 
 #noticias{
 justify-self: center;
@@ -222,41 +219,15 @@ grid-template-rows: repeat(auto-fill, 1fr);
 
 </style>
 <body>
-    
-<?php include_once("../model/noticiaDAO.php"); 
-$noticias = buscarNoticias()?>
+<?php
 
-     <!--Responsividade com as dimensões do SAMSUNG Galaxy A51/71, iPad Air, Nest Hub Max-->
-     
-        <header>
-        <div id="superior"> 
-            
-            <div id="faixa1">
-                <div id="pesquisa">
-                    <img src="../imagens/lupa.png" style="height: 25px;width:25px;margin: 8px;" alt="lupa">
-                    <img src="x.png" style="height: 25px;width:25px;margin-left: 220px;margin-bottom: 8px;" alt="lupa">
-                </div>
-                <img src="../imagens/logo.png" style="height:60px;width:60px;margin:15px;align-self:center;" alt="logo">
-            </div>
 
-            <div id="barra">
-                <div>Início</div>
-                <div class="linha"></div>
-                <div >Artigo</div>
-                <div class="linha"></div>
-                <div>Publicações</div>
-                <div class="linha"></div>
-                <div>Notícias</div>
-                <div class="linha"></div>
-                <div ><a href="../telaPrincipal.html" style="text-decoration: none;">Câmpus</a></div>
-                <div class="linha"></div>
-                <div style="white-space: nowrap;"><span>Áreas de conhecimento</span></div>
-            </div>
-            
+include_once("header.php");
+include_once("../model/noticiaDAO.php"); 
+$noticias = buscarNoticias();
 
-        </div>
+?>
 
-    </header>
     <div id="container">
 
         <div id="inferior">
@@ -283,5 +254,12 @@ $noticias = buscarNoticias()?>
         
     </div>
     
+</body>
+<?php
+
+include_once("footer.php");
+
+?>
+
 </body>
 </html>

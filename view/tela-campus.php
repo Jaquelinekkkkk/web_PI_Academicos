@@ -119,36 +119,12 @@
     </style>
 </head>
 <body>
-<div class="superor">
-    <div class="top-barra">
 
-        <div class="pesquisa-box">
-            <img id="pesquisa" src="imagens/Component 8.png" alt="">
-            <img id="xis" src="imagens/Component 12.png" alt=""></div>
-
-        <img class="logo" src="imagens/logo.png" alt="Logo">
-        
-    </div>
-
-    <div class="horizontal-links">
-        <a href="https://www.ifsc.edu.br/">Início</a>
-        <div class="div-traco-vertical"></div>
-
-        <a href="./artigos.html">Artigos</a>
-        <div class="div-traco-vertical"></div>
-
-        <a href="https://www.ifsc.edu.br/comunidade">Publicações</a>
-        <div class="div-traco-vertical"></div>
-
-        <a href="https://www.ifsc.edu.br/web/campus-gaspar/noticias">Notícias</a>
-        <div class="div-traco-vertical"></div>
-
-        <a href="./telaPrincipal.html">Câmpus</a>
-        <div class="div-traco-vertical"></div>
-
-        <a href="https://www.ifsc.edu.br/cursos">Áreas de conhecimento</a>
-    </div>
-</div>
+<?php 
+include_once("header.php");
+include_once("../model/campusDAO.php"); 
+$campus = buscarCampus();
+?>
 
     <div class="separador-container">
         <div class="div-traco"></div>
@@ -157,71 +133,12 @@
     </div>
 
     <div class="vertical-links">
-        <a href="https://www.ifsc.edu.br/web/campus-ararangua">Araranguá</a>
-        <div class="div-traco"></div>
 
-        <a href="https://www.ifsc.edu.br/web/campus-cacador">Caçador</a>
+    <?php foreach ($campus as $c): ?>
+        <a href="https://www.ifsc.edu.br/web/campus-ararangua"><?= htmlspecialchars($c['nomeCampus']) ?></a>
         <div class="div-traco"></div>
+        <?php endforeach; ?>
 
-        <a href="https://www.ifsc.edu.br/web/campus-canoinhas">Canoinhas</a>
-        <div class="div-traco"></div>
-
-        <a href="https://www.ifsc.edu.br/web/campus-chapeco">Chapecó</a>
-        <div class="div-traco"></div>
-
-        <a href="https://www.ifsc.edu.br/web/campus-criciuma">Criciúma</a>
-        <div class="div-traco"></div>
-
-        <a href="https://www.ifsc.edu.br/web/campus-florianopolis">Florianópolis</a>
-        <div class="div-traco"></div>
-
-        <a href="https://www.ifsc.edu.br/web/campus-florianopolis-continente">Florianópolis-Continente</a>
-        <div class="div-traco"></div>
-
-        <a href="https://www.ifsc.edu.br/web/campus-garopaba">Garopaba</a>
-        <div class="div-traco"></div>
-
-        <a href="https://www.ifsc.edu.br/web/campus-gaspar">Gaspar</a>
-        <div class="div-traco"></div>
-
-        <a href="https://www.ifsc.edu.br/web/campus-itajai">Itajaí</a>
-        <div class="div-traco"></div>
-
-        <a href="https://www.ifsc.edu.br/web/campus-jaragua-do-sul">Jaraguá do Sul - Centro</a>
-        <div class="div-traco"></div>
-
-        <a href="https://www.ifsc.edu.br/web/campus-jaragua-do-sul">Jaraguá do Sul - Rau</a>
-        <div class="div-traco"></div>
-
-        <a href="https://www.ifsc.edu.br/web/campus-joinville">Joinville</a>
-        <div class="div-traco"></div>
-
-        <a href="https://www.ifsc.edu.br/web/campus-lages">Lages</a>
-        <div class="div-traco"></div>
-
-        <a href="https://www.ifsc.edu.br/web/campus-palhoca-bilingue">Palhoça Bilíngue</a>
-        <div class="div-traco"></div>
-
-        <a href="https://www.ifsc.edu.br/web/campus-sao-carlos">São Carlos</a>
-        <div class="div-traco"></div>
-
-        <a href="https://www.ifsc.edu.br/web/campus-sao-jose">São José</a>
-        <div class="div-traco"></div>
-
-        <a href="https://www.ifsc.edu.br/web/campus-sao-lourenco-do-oeste">São Lourenço do Oeste</a>
-        <div class="div-traco"></div>
-
-        <a href="https://www.ifsc.edu.br/web/campus-sao-miguel-do-oeste">São Miguel do Oeste</a>
-        <div class="div-traco"></div>
-
-        <a href="https://www.ifsc.edu.br/web/campus-tubarao">Tubarão</a>
-        <div class="div-traco"></div>
-
-        <a href="https://www.ifsc.edu.br/web/campus-urupema">Urupema</a>
-        <div class="div-traco"></div>
-
-        <a href="https://www.ifsc.edu.br/web/campus-xanxere">Xanxerê</a>
-        <div class="div-traco"></div>
     </div>
 
 </body>
