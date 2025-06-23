@@ -13,14 +13,19 @@ $result=recuperarUsuario($email, $codigo);
 var_dump($result);
 
 if (empty($result) == false) {
-  echo "✅ Código válido! Redirecionando para redefinir a senha...";
-  // Aqui você faria um header("Location: nova_senha.php");
+    $idUsuario = $result[0]['idUsuario'];
 
-if($senha == $confirmaSenha){
-  echo "Senha alterada com sucesso;"
-}
+    if ($senha === $confirmaSenha) {
+        if (atualizarSenha($idUsuario, $senha)) {
+            echo "✅ Senha atualizada com sucesso!";
+        } else {
+            echo "❌ Erro ao atualizar a senha. Tente novamente.";
+        }
+    } else {
+        echo "⚠️ As senhas não coincidem. Corrija e envie novamente.";
+    }
 
 } else {
-  echo "❌ Código inválido. Tente novamente.";
+    echo "❌ Código inválido ou já utilizado. Solicite outro.";
 }
 ?>
