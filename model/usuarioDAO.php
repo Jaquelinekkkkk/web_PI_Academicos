@@ -1,5 +1,7 @@
 <?php
 
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
 include_once('dal/conexao.php');
 
@@ -16,17 +18,22 @@ function recuperarUsuario($email, $codigo) {
 
 function atualizarSenha($idUsuario, $novaSenha) {
     $pdo = conectar();
-    $hashSenha = password_hash($novaSenha, PASSWORD_DEFAULT);
 
     try {
         $pdo->beginTransaction();
 
-        // Atualiza a senha do usuário
+        // Salva a senha visível (sem hash)
         $sql1 = "UPDATE usuarios SET senha = :senha WHERE idUsuario = :idUsuario";
         $stmt1 = $pdo->prepare($sql1);
-        $stmt1->bindParam(':senha', $hashSenha);
+        $stmt1->bindParam(':senha', $novaSenha);
         $stmt1->bindParam(':idUsuario', $idUsuario);
-        $stmt1->execute();
+
+        if (!$stmt1->execute()) {
+            $erro = $stmt1->errorInfo();
+            echo "Erro ao atualizar senha: " . $erro[2];
+            $pdo->rollBack();
+            return false;
+        }
 
         // Marca o código como utilizado
         $sql2 = "UPDATE recuperacao_senhas 
@@ -34,18 +41,20 @@ function atualizarSenha($idUsuario, $novaSenha) {
                  WHERE idUsuario = :idUsuario AND codigo_utilizado = 0";
         $stmt2 = $pdo->prepare($sql2);
         $stmt2->bindParam(':idUsuario', $idUsuario);
-        $stmt2->execute();
+
+        if (!$stmt2->execute()) {
+            $erro = $stmt2->errorInfo();
+            echo "Erro ao atualizar código: " . $erro[2];
+            $pdo->rollBack();
+            return false;
+        }
 
         $pdo->commit();
         return true;
 
     } catch (Exception $e) {
+        echo "Exceção: " . $e->getMessage();
         $pdo->rollBack();
-        error_log("Erro ao atualizar senha: " . $e->getMessage());
         return false;
     }
 }
-
-
-
-

@@ -1,6 +1,6 @@
 <?php
 
-include_once("model/usuarioDAO.php");
+//include_once("model/usuarioDAO.php");
 
 header('Content-Type: text/plain');
 
