@@ -1,31 +1,33 @@
 <?php
-
 include_once("model/usuarioDAO.php");
 
 $email = $_POST['email'] ?? '';
 $codigo = $_POST['codigo'] ?? '';
-
 $senha = $_POST['senha'] ?? '';
 $confirmaSenha = $_POST['confirmar_senha'] ?? '';
 
-$result=recuperarUsuario($email, $codigo);
+$result = recuperarUsuario($email, $codigo);
 
-var_dump($result);
-
-if (empty($result) == false) {
+if (!empty($result)) {
     $idUsuario = $result[0]['idUsuario'];
 
     if ($senha === $confirmaSenha) {
         if (atualizarSenha($idUsuario, $senha)) {
-            echo "✅ Senha atualizada com sucesso!";
+            // Redireciona para tela de sucesso
+            header("Location:confirmacao_alteracao.html");
+            exit;
         } else {
-            echo "❌ Erro ao atualizar a senha. Tente novamente.";
+            // Erro ao atualizar senha no banco
+            header("Location:erro_alteracao.html?erro=atualizacao");
+            exit;
         }
     } else {
-        echo "⚠️ As senhas não coincidem. Corrija e envie novamente.";
+        // Senhas não coincidem
+        header("Location:erro_alteracao.html?erro=senhas&email=$email&codigo=$codigo");
+        exit;
     }
-
 } else {
-    echo "❌ Código inválido ou já utilizado. Solicite outro.";
+    // Código inválido ou já utilizado
+    header("Location:erro_alteracao.html?erro=codigo");
+    exit;
 }
-?>

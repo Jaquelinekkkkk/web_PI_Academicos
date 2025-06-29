@@ -135,7 +135,7 @@ $campus = buscarCampus();
     <div class="vertical-links">
 
     <?php foreach ($campus as $c): ?>
-        <a href="https://www.ifsc.edu.br/web/campus-ararangua"><?= htmlspecialchars($c['nomeCampus']) ?></a>
+        <a href="/WEB_PI_Academicos/view/tela-projetos-campus.php?id_campus=<?= $c['idCampus'] ?>"><?= htmlspecialchars($c['nomeCampus']) ?></a>
         <div class="div-traco"></div>
         <?php endforeach; ?>
 

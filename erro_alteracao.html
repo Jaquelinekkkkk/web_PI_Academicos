@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Erro na Alteração de Senha</title>
+  <style>
+    body {
+      background-color: #f0fdf4;
+      color: #840d0b;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 100px;
+    }
+
+    .box {
+      background-color: #DBA5A5;
+      border: 2px solid #840d0b;
+      padding: 30px;
+      width: 400px;
+      margin: 0 auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .emoji {
+      font-size: 48px;
+    }
+
+    .ok-button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #840d0b;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    .ok-button:hover {
+      background-color: #cf403d;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="emoji">❌</div>
+    <h2 id="titulo">Erro ao alterar a senha</h2>
+    <p id="mensagem">Ocorreu um problema ao atualizar sua senha. Tente novamente.</p>
+    <button class="ok-button" onclick="window.location.href='recuperacao_senha.php'">Voltar</button>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const erro = params.get("erro");
+
+    const mensagens = {
+      senhas: {
+        titulo: "As senhas não coincidem",
+        mensagem: "Certifique-se de digitar a mesma senha nos dois campos."
+      },
+      codigo: {
+        titulo: "Código inválido ou já utilizado",
+        mensagem: "Solicite um novo código de recuperação."
+      },
+      atualizacao: {
+        titulo: "Erro ao atualizar a senha",
+        mensagem: "Não foi possível salvar sua nova senha. Tente novamente."
+      }
+    };
+
+    if (mensagens[erro]) {
+      document.getElementById("titulo").textContent = mensagens[erro].titulo;
+      document.getElementById("mensagem").textContent = mensagens[erro].mensagem;
+    }
+  </script>
+</body>
+</html>
