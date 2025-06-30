@@ -125,7 +125,7 @@ $projetos = buscarProjetosPorCampus($idCampus);
 
         <div class="info">
           <div class="titulo-projeto">
-            <a href="tela-principal-projeto.php?idProjeto=<?= $p['idProjeto'] ?>">
+            <a href="tela_principal_projeto.php?idProjeto=<?= $p['idProjeto'] ?>">
               <?= htmlspecialchars($p['tituloProjeto']) ?>
             </a>
           </div>

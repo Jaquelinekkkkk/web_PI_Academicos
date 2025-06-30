@@ -137,7 +137,7 @@
         <a href="../view/tela-artigos.php">Artigos</a>
         <div class="div-traco-vertical"></div>
 
-        <a href="https://www.ifsc.edu.br/comunidade">Publicações</a>
+        <a href="../view/publicacoes-Gerais.php">Publicações</a>
         <div class="div-traco-vertical"></div>
 
         <a href="../view/tela-noticias.php">Notícias</a>
@@ -146,7 +146,7 @@
         <a href="../view/tela-campus.php">Câmpus</a>
         <div class="div-traco-vertical"></div>
 
-        <a href="https://www.ifsc.edu.br/cursos">Áreas de conhecimento</a>
+        <a href="../view/area-conhecimento.php">Áreas de conhecimento</a>
     </div>
 </div>
     
