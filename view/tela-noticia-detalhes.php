@@ -1,3 +1,9 @@
+<?php
+$idNoticia = $_GET['idNoticia'];
+include_once("header.php");
+include_once("../model/noticiaDAO.php");
+$noticia = buscarDetalhesNoticia($idNoticia);
+?>
 
 
 <!DOCTYPE html>
@@ -14,7 +20,7 @@ body{
 } 
 p{
     margin:40px;
-    font-weight:normal;
+    font-weight:bold;
 }
 header {
             
@@ -99,7 +105,7 @@ justify-self: center;
 display:grid;
 align-content: center;
 justify-content:center;
-grid-template-columns: 500px 500px;
+grid-template-columns: 750px;
 grid-template-rows: repeat(auto-fill, 1fr);
 
 }
@@ -108,8 +114,8 @@ grid-template-rows: repeat(auto-fill, 1fr);
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 250px;
-    width: 400px;
+    height: 400px;
+    width: 650px;
     margin: 40px;
     border-radius: 10px;
     background-color: rgba(56, 102, 65);
@@ -117,23 +123,18 @@ grid-template-rows: repeat(auto-fill, 1fr);
 
 #post img {
     width: 100%;
-    height: 100%;   
+    max-height: auto;
+    height: 100%;
     object-fit: cover;
     display: block;
     border-radius: 10px;
 
 }
 
-#post a { 
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-
 
 #legenda {
     font-weight: normal;
+    font-size: 18px;
     margin-top: -30px;
 }
 #titulo{
@@ -231,10 +232,6 @@ grid-template-rows: repeat(auto-fill, 1fr);
 <?php
 
 
-include_once("header.php");
-include_once("../model/noticiaDAO.php"); 
-$noticias = buscarNoticias();
-
 
 ?>
 
@@ -248,18 +245,20 @@ $noticias = buscarNoticias();
              </div>
              <div id="noticias">
 
-                <?php foreach ($noticias as $noticia): ?>
-                <div><div id="post">             
-
-                    <a href="/WEB_PI_Academicos/view/tela-noticia-detalhes.php?idNoticia=<?= $noticia['idNoticia'] ?>">
-                        
-                        <img src="data:image/jpeg;base64,<?= base64_encode($noticia['arquivoFoto']) ?>" alt="Imagem da notícia">
-                    </a>
-                </div><p id="legenda"><b><?= htmlspecialchars($noticia['titulo']) ?></b>
-                    <br> 
-                    <?= date('d/m/y', strtotime($noticia['dataPublicacao'])) ?></p>
+                
+                <div><div id="post">
+                    <img src="data:image/jpeg;base64,<?= base64_encode($noticia['arquivoFoto']) ?>" alt="Imagem da notícia">
+                
                 </div>
-                <?php endforeach; ?>
+                <p id="legenda"><b><?= htmlspecialchars($noticia['titulo']) ?></b> 
+                    <br>
+                    <br>
+                    <?= htmlspecialchars($noticia['texto']) ?>
+                    <br> 
+                    <br>
+                    <?= date('d/m/y', strtotime($noticia['dataPublicacao'])) ?> - Notícia publicada por  <?= htmlspecialchars($noticia['nome']) ?> </p>
+                </div>
+                
 
                 
                 

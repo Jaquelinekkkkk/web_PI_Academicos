@@ -9,6 +9,10 @@
             background-color: #ECECEC;
             font-family: Courier;
         }
+        h2{
+            margin-left:15px;
+        }
+
           .superor{
             background-color: #BBC8BE;
             border-radius: 5px;
@@ -53,7 +57,6 @@
         }
          .horizontal-links a {
             color: #386641;
-            text-decoration: none;/*sublinhado*/
             padding: 10px; /*5tamanho da caixa verde*/
             margin: 5px;/*espaços entre os links*/
            /* background-color: #98AE9C;*/
@@ -93,16 +96,16 @@
         }
         .vertical-links a {
             color: black;
-            text-decoration: none;
+            
             padding: 10px;
             margin: 5px;
             border-radius: 5px;
             text-align: center;
         }
         p{
-            font-weight: bold;
-            margin-top: 0;
-            color: #386641;
+            font-weight: normal;
+            margin-left: 15px;
+            /*color: #386641;*/
         }
            .div-traco-vertical {
     width: 5px; /* Define largura mínima para criar o divisor vertical */
@@ -117,18 +120,20 @@
             /*  filter: invert(2);<p>Pesquisar...</p>*/
            /* border-radius: 50%;*/
         }
+        #arquivo:hover {
+        text-decoration: underline;
+        }
+
 
     </style>
 </head>
 <body>
-    <?php
 
-
+<?php
+$idArtigo = $_GET['idArtigo'];
 include_once("header.php");
-include_once("../model/artigoDAO.php"); 
-$artigos = buscarArtigos();
-
-
+include_once("../model/artigoDAO.php");
+$artigo = buscarDetalhesArtigo($idArtigo);
 ?>
 
 
@@ -141,13 +146,19 @@ $artigos = buscarArtigos();
 
     <div class="vertical-links">
 
-    <?php foreach ($artigos as $artigo): ?>
 
-        <div><a href="/WEB_PI_Academicos/view/tela-artigo-detalhes.php?idArtigo=<?= $artigo['idArtigo'] ?>"> <?= htmlspecialchars($artigo['titulo']) ?> </a>
-       <p><?= htmlspecialchars($artigo['autores']) ?> - <?= date('d/m/y', strtotime($artigo['dataPublicacao'])) ?></p>
+
+        <div><h2> <?= htmlspecialchars($artigo['titulo']) ?> </h2>
+       <p> <b> Autores: </b> <?= htmlspecialchars($artigo['autores']) ?> 
+       <br>
+       <b>Projeto:</b>  <?= htmlspecialchars($artigo['tituloProjeto']) ?>
+       <br>
+       <b>Data de publicação:</b>  <?= date('d/m/y', strtotime($artigo['dataPublicacao'])) ?></p>
+       <a id="arquivo" href="ver-pdf.php?idArtigo=<?= $artigo['idArtigo'] ?>" target="_blank"> Abrir arquivo PDF</a>
+       <p> <b> Resumo: </b> <?= htmlspecialchars($artigo['resumo']) ?> </p>
         </div>    
 
-        <?php endforeach; ?>
+
         
     </div>
 
