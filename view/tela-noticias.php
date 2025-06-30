@@ -117,16 +117,23 @@ grid-template-rows: repeat(auto-fill, 1fr);
 
 #post img {
     width: 100%;
-    height: 100%;
+    height: 100%;   
     object-fit: cover;
     display: block;
     border-radius: 10px;
 
 }
 
+#post a { 
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+
 
 #legenda {
-    font-weight: bold;
+    font-weight: normal;
     margin-top: -30px;
 }
 #titulo{
@@ -212,7 +219,7 @@ grid-template-rows: repeat(auto-fill, 1fr);
 }
 
 #legenda {
-    font-weight: bold;
+    font-weight: normal;
     margin-top: 0px;
 }
 
@@ -244,11 +251,11 @@ $noticias = buscarNoticias();
                 <?php foreach ($noticias as $noticia): ?>
                 <div><div id="post">             
 
-                    <a href="/WEB_PI_Academicos/view/tela-noticia-detalhes.php?idNoticia=<?= $noticia['idNoticia'] ?>"><?= htmlspecialchars($noticia['idNoticia']) ?>
+                    <a href="/WEB_PI_Academicos/view/tela-noticia-detalhes.php?idNoticia=<?= $noticia['idNoticia'] ?>">
                         
                         <img src="data:image/jpeg;base64,<?= base64_encode($noticia['arquivoFoto']) ?>" alt="Imagem da notícia">
                     </a>
-                </div><p id="legenda">Título: <?= htmlspecialchars($noticia['titulo']) ?> 
+                </div><p id="legenda"><b><?= htmlspecialchars($noticia['titulo']) ?></b>
                     <br> 
                     <?= date('d/m/y', strtotime($noticia['dataPublicacao'])) ?></p>
                 </div>

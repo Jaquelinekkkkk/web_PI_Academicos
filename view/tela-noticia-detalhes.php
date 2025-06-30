@@ -20,7 +20,7 @@ body{
 } 
 p{
     margin:40px;
-    font-weight:normal;
+    font-weight:bold;
 }
 header {
             
@@ -133,7 +133,8 @@ grid-template-rows: repeat(auto-fill, 1fr);
 
 
 #legenda {
-    font-weight: bold;
+    font-weight: normal;
+    font-size: 18px;
     margin-top: -30px;
 }
 #titulo{
@@ -219,7 +220,7 @@ grid-template-rows: repeat(auto-fill, 1fr);
 }
 
 #legenda {
-    font-weight: bold;
+    font-weight: normal;
     margin-top: 0px;
 }
 
@@ -231,9 +232,6 @@ grid-template-rows: repeat(auto-fill, 1fr);
 <?php
 
 
-include_once("header.php");
-include_once("../model/noticiaDAO.php"); 
-$noticias = buscarNoticias();
 
 ?>
 
@@ -252,11 +250,13 @@ $noticias = buscarNoticias();
                     <img src="data:image/jpeg;base64,<?= base64_encode($noticia['arquivoFoto']) ?>" alt="Imagem da notícia">
                 
                 </div>
-                <p id="legenda"><br>Título: <?= htmlspecialchars($noticia['titulo']) ?> 
+                <p id="legenda"><b><?= htmlspecialchars($noticia['titulo']) ?></b> 
                     <br>
-                    Legenda: <?= htmlspecialchars($noticia['texto']) ?>
+                    <br>
+                    <?= htmlspecialchars($noticia['texto']) ?>
                     <br> 
-                    <?= date('d/m/y', strtotime($noticia['dataPublicacao'])) ?></p>
+                    <br>
+                    <?= date('d/m/y', strtotime($noticia['dataPublicacao'])) ?> - Notícia publicada por  <?= htmlspecialchars($noticia['nome']) ?> </p>
                 </div>
                 
 
