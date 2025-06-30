@@ -1,3 +1,9 @@
+<?php
+$idNoticia = $_GET['idNoticia'];
+include_once("header.php");
+include_once("../model/noticiaDAO.php");
+$noticia = buscarDetalhesNoticia($idNoticia);
+?>
 
 
 <!DOCTYPE html>
@@ -99,7 +105,7 @@ justify-self: center;
 display:grid;
 align-content: center;
 justify-content:center;
-grid-template-columns: 500px 500px;
+grid-template-columns: 750px;
 grid-template-rows: repeat(auto-fill, 1fr);
 
 }
@@ -108,8 +114,8 @@ grid-template-rows: repeat(auto-fill, 1fr);
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 250px;
-    width: 400px;
+    height: 400px;
+    width: 650px;
     margin: 40px;
     border-radius: 10px;
     background-color: rgba(56, 102, 65);
@@ -117,6 +123,7 @@ grid-template-rows: repeat(auto-fill, 1fr);
 
 #post img {
     width: 100%;
+    max-height: auto;
     height: 100%;
     object-fit: cover;
     display: block;
@@ -228,7 +235,6 @@ include_once("header.php");
 include_once("../model/noticiaDAO.php"); 
 $noticias = buscarNoticias();
 
-
 ?>
 
     <div id="container">
@@ -241,18 +247,18 @@ $noticias = buscarNoticias();
              </div>
              <div id="noticias">
 
-                <?php foreach ($noticias as $noticia): ?>
-                <div><div id="post">             
-
-                    <a href="/WEB_PI_Academicos/view/tela-noticia-detalhes.php?idNoticia=<?= $noticia['idNoticia'] ?>"><?= htmlspecialchars($noticia['idNoticia']) ?>
-                        
-                        <img src="data:image/jpeg;base64,<?= base64_encode($noticia['arquivoFoto']) ?>" alt="Imagem da notícia">
-                    </a>
-                </div><p id="legenda">Título: <?= htmlspecialchars($noticia['titulo']) ?> 
+                
+                <div><div id="post">
+                    <img src="data:image/jpeg;base64,<?= base64_encode($noticia['arquivoFoto']) ?>" alt="Imagem da notícia">
+                
+                </div>
+                <p id="legenda"><br>Título: <?= htmlspecialchars($noticia['titulo']) ?> 
+                    <br>
+                    Legenda: <?= htmlspecialchars($noticia['texto']) ?>
                     <br> 
                     <?= date('d/m/y', strtotime($noticia['dataPublicacao'])) ?></p>
                 </div>
-                <?php endforeach; ?>
+                
 
                 
                 
