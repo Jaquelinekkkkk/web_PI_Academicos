@@ -78,26 +78,4 @@ function buscarBolsistasProjeto($idProjeto) {
     return $stmt->fetchAll(PDO::FETCH_COLUMN);
 }
 
-function buscarPostagensProjeto($idProjeto) {
-    $sql = "SELECT legenda 
-            FROM academicos.postagens 
-            WHERE idProjeto = :idProjeto";
-
-    $pdo = conectar();
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':idProjeto', $idProjeto, PDO::PARAM_INT);
-    $stmt->execute();
-    return $stmt->fetchAll(PDO::FETCH_COLUMN);
-}
-
-function buscarArtigosProjeto($idProjeto) {
-    $sql = "SELECT titulo 
-            FROM academicos.artigos 
-            WHERE idProjeto = :idProjeto";
-
-    $pdo = conectar();
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':idProjeto', $idProjeto, PDO::PARAM_INT);
-    $stmt->execute();
-    return $stmt->fetchAll(PDO::FETCH_COLUMN);
-}
+?>

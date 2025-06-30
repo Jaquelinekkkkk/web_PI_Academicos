@@ -1,6 +1,10 @@
 <?php
 include_once("header.php");
 include_once('../model/projetosDAO.php');
+include_once('../model/postagemDAO.php');
+include_once('../model/artigosDAO.php');
+
+
 
 $idProjeto = $_GET['idProjeto'] ?? null;
 
@@ -65,7 +69,7 @@ if (!$projeto) {
     }
 
     h2 {
-      color: #386641;
+      color: black;
       font-size: 24px;
       margin: 0;
     }
@@ -127,7 +131,7 @@ if (!$projeto) {
     .separador-link {
       color: #000;
       text-decoration: none;
-      font-weight: normal;
+      font-weight: bold;
       font-size: 20px;
       transition: color 0.3s ease;
     }
@@ -149,10 +153,7 @@ if (!$projeto) {
       width: 100%;
     }
 
-    .publicacoes h3 {
-      color: black;
-      margin-top: 10px;
-    }
+    
 
     .postagem-item {
       background-color: #F1F1F1;
@@ -165,11 +166,12 @@ if (!$projeto) {
 
     .postagem-img {
       width: 100%;
-      max-height: 250px;
+      max-height: auto;
       object-fit: cover;
       border-radius: 8px;
       margin-bottom: 10px;
       border: 1px solid #ccc;
+      display: block;
     }
   </style>
 </head>
@@ -220,12 +222,12 @@ if (!$projeto) {
       </div>
     </div>
 
-    <!-- 🔗 Separador com traços e links -->
+    <!--  Separador com traços e links postagem e artigo -->
     <div class="separador-container">
       <div class="div-traco"></div>
 
       <div class="link-pares">
-        <a href="postagens-projeto.php?idProjeto=<?= $projeto['idProjeto'] ?>" class="separador-link">Ver Postagens</a>
+        <a href="tela_principal_projeto.php?idProjeto=<?= $projeto['idProjeto'] ?>" class="separador-link">Ver Postagens</a>
         <span class="separador-hifen">-</span>
         <a href="artigos-projeto.php?idProjeto=<?= $projeto['idProjeto'] ?>" class="separador-link">Ver Artigos</a>
       </div>
@@ -233,27 +235,26 @@ if (!$projeto) {
       <div class="div-traco"></div>
     </div>
 
-    <!-- 🖼️ Seção de postagens com imagem -->
+    <!--  Seção de postagens com imagem -->
     <section class="publicacoes">
-      <h3>Postagens:</h3>
+  <?php if (!empty($postagens) && is_array($postagens)): ?>
+    <?php foreach ($postagens as $post): ?>
+      <div class="postagem-item">
+        <?php if (!empty($post['arquivoFoto'])): ?>
+          <img class="postagem-img" 
+               src="data:image/jpeg;base64,<?= base64_encode($post['arquivoFoto']) ?>" 
+               alt="Imagem da postagem">
+        <?php else: ?>
+          <img class="postagem-img" src="../view/FotoPadrao.png" alt="Imagem padrão">
+        <?php endif; ?>
 
-      <?php if (!empty($postagens)): ?>
-        <?php foreach ($postagens as $post): ?>
-          <div class="postagem-item">
-            <?php if (!empty($post['imagem'])): ?>
-              <img class="postagem-img" src="data:image/jpeg;base64,<?= base64_encode($post['imagem']) ?>" alt="Imagem da postagem">
-            <?php else: ?>
-              <img class="postagem-img" src="../assets/sem-imagem.png" alt="Imagem padrão">
-            <?php endif; ?>
-
-            <p><?= htmlspecialchars($post['texto']) ?></p>
-          </div>
-        <?php endforeach; ?>
-      <?php else: ?>
-        <p>Nenhuma postagem cadastrada.</p>
-      <?php endif; ?>
-    </section>
-
+        <p><?= htmlspecialchars($post['legenda'] ?? '') ?></p>
+      </div>
+    <?php endforeach; ?>
+  <?php else: ?>
+    <p>Nenhuma postagem cadastrada.</p>
+  <?php endif; ?>
+</section>
   </div>
 
 </body>
