@@ -14,7 +14,7 @@ $projeto        = buscarDetalhesProjeto($idProjeto);
 $coordenadores  = buscarCoordenadoresProjeto($idProjeto);
 $bolsistas      = buscarBolsistasProjeto($idProjeto);
 $postagens      = buscarPostagensProjeto($idProjeto);
-$artigos        = buscarArtigosProjeto($idProjeto);
+$artigos        = buscarArtigosProjeto($idProjeto); // agora retorna array associativo
 
 if (!$projeto) {
   die("Projeto não encontrado.");
@@ -118,28 +118,33 @@ $paginaAtual = basename($_SERVER['PHP_SELF']);
     }
     .separador-hifen { font-size: 20px; color: #000; }
 
-    .publicacoes, .artigos {
+    .artigos {
       background-color: #386641;
       padding: 20px;
       border-radius: 12px;
       max-width: 600px;
       width: 100%;
     }
-    .postagem-item, .artigo-item {
-      background-color: #F1F1F1;
-      border-radius: 10px;
-      padding: 12px;
-      margin-bottom: 20px;
-      color: #2d2d2d;
-      font-size: 15px;
-    }
-    .postagem-img {
+    .vertical-links {
+      display: flex;
+      flex-direction: column;
       width: 100%;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 10px;
-      border: 1px solid #ccc;
+      margin-top: 15px;
+    }
+    .vertical-links a {
+      color: black;
+      text-decoration: none;
+      padding: 10px;
+      margin: 5px 0;
+      border-radius: 5px;
+      background-color: #F1F1F1;
       display: block;
+      font-weight: bold;
+    }
+    .vertical-links p {
+      margin: 2px 10px;
+      font-size: 14px;
+      color: #ECECEC;
     }
   </style>
 </head>
@@ -200,19 +205,22 @@ $paginaAtual = basename($_SERVER['PHP_SELF']);
     <div class="div-traco"></div>
   </div>
 
-  <!-- Artigos -->
   <section class="artigos">
     <h3 style="color: #fff;">📄 Artigos do Projeto</h3>
-
-    <?php if (!empty($artigos) && is_array($artigos)): ?>
-      <?php foreach ($artigos as $titulo): ?>
-        <div class="artigo-item">
-          <p><?= htmlspecialchars($titulo) ?></p>
-        </div>
-      <?php endforeach; ?>
-    <?php else: ?>
-      <p style="color: #fff;">Nenhum artigo cadastrado.</p>
-    <?php endif; ?>
+    <div class="vertical-links">
+      <?php if (!empty($artigos) && is_array($artigos)): ?>
+        <?php foreach ($artigos as $artigo): ?>
+          <div>
+            <a href="detalhes-artigo.php?id=<?= $artigo['idArtigo'] ?>" target="_blank">
+              <?= htmlspecialchars($artigo['titulo']) ?>
+            </a>
+            <p><?= htmlspecialchars($artigo['autores']) ?> - <?= date("d/m/Y", strtotime($artigo['dataPublicacao'])) ?></p>
+          </div>
+        <?php endforeach; ?>
+      <?php else: ?>
+        <p style="color: #fff;">Nenhum artigo cadastrado.</p>
+      <?php endif; ?>
+    </div>
   </section>
 
 </div>

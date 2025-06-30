@@ -1,8 +1,9 @@
 <?php
 include_once('../dal/conexao.php');
 
+
 function buscarArtigosProjeto($idProjeto) {
-    $sql = "SELECT titulo 
+    $sql = "SELECT idArtigo, titulo, autores, dataPublicacao 
             FROM academicos.artigos 
             WHERE idProjeto = :idProjeto";
 
@@ -10,6 +11,6 @@ function buscarArtigosProjeto($idProjeto) {
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':idProjeto', $idProjeto, PDO::PARAM_INT);
     $stmt->execute();
-    return $stmt->fetchAll(PDO::FETCH_COLUMN);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
-?>
+ ?>
