@@ -21,6 +21,8 @@ $artigos        = buscarArtigosProjeto($idProjeto);
 if (!$projeto) {
   die("Projeto não encontrado.");
 }
+
+$paginaAtual = basename($_SERVER['PHP_SELF']);
 ?>
 
 <!DOCTYPE html>
@@ -131,13 +133,19 @@ if (!$projeto) {
     .separador-link {
       color: #000;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: normal;
       font-size: 20px;
       transition: color 0.3s ease;
     }
 
     .separador-link:hover {
       color: #133a21;
+    }
+    .separador-link.ativo {
+      color: #fff;
+      background-color: #133a21;
+      padding: 4px 10px;
+      border-radius: 6px;
     }
 
     .separador-hifen {
@@ -226,11 +234,17 @@ if (!$projeto) {
     <div class="separador-container">
       <div class="div-traco"></div>
 
-      <div class="link-pares">
-        <a href="tela_principal_projeto.php?idProjeto=<?= $projeto['idProjeto'] ?>" class="separador-link">Ver Postagens</a>
-        <span class="separador-hifen">-</span>
-        <a href="artigos-projeto.php?idProjeto=<?= $projeto['idProjeto'] ?>" class="separador-link">Ver Artigos</a>
-      </div>
+      <div class="separador-container">
+    <div class="div-traco"></div>
+    <div class="link-pares">
+      <a href="tela_principal_projeto.php?idProjeto=<?= $projeto['idProjeto'] ?>"
+         class="separador-link <?= $paginaAtual === 'tela_principal_projeto.php' ? 'ativo' : '' ?>">Ver Postagens</a>
+      <span class="separador-hifen">-</span>
+      <a href="artigos-projeto.php?idProjeto=<?= $projeto['idProjeto'] ?>"
+         class="separador-link <?= $paginaAtual === 'artigos-projeto.php' ? 'ativo' : '' ?>">Ver Artigos</a>
+    </div>
+    <div class="div-traco"></div>
+  </div>
 
       <div class="div-traco"></div>
     </div>

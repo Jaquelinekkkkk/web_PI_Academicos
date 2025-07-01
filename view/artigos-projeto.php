@@ -2,7 +2,7 @@
 include_once("header.php");
 include_once('../model/projetosDAO.php');
 include_once('../model/postagemDAO.php');
-include_once('../model/artigosDAO.php');
+include_once('../model/artigoDAO.php');
 
 $idProjeto = $_GET['idProjeto'] ?? null;
 
@@ -15,6 +15,7 @@ $coordenadores  = buscarCoordenadoresProjeto($idProjeto);
 $bolsistas      = buscarBolsistasProjeto($idProjeto);
 $postagens      = buscarPostagensProjeto($idProjeto);
 $artigos        = buscarArtigosProjeto($idProjeto); // agora retorna array associativo
+
 
 if (!$projeto) {
   die("Projeto não encontrado.");
@@ -196,7 +197,7 @@ $paginaAtual = basename($_SERVER['PHP_SELF']);
   <div class="separador-container">
     <div class="div-traco"></div>
     <div class="link-pares">
-      <a href="postagens-projeto.php?idProjeto=<?= $projeto['idProjeto'] ?>"
+      <a href="tela_principal_projeto.php?idProjeto=<?= $projeto['idProjeto'] ?>"
          class="separador-link <?= $paginaAtual === 'postagens-projeto.php' ? 'ativo' : '' ?>">Ver Postagens</a>
       <span class="separador-hifen">-</span>
       <a href="artigos-projeto.php?idProjeto=<?= $projeto['idProjeto'] ?>"
@@ -211,8 +212,7 @@ $paginaAtual = basename($_SERVER['PHP_SELF']);
       <?php if (!empty($artigos) && is_array($artigos)): ?>
         <?php foreach ($artigos as $artigo): ?>
           <div>
-            <a href="detalhes-artigo.php?id=<?= $artigo['idArtigo'] ?>" target="_blank">
-              <?= htmlspecialchars($artigo['titulo']) ?>
+            <a href="/WEB_PI_Academicos/view/tela-artigo-detalhes.php?idArtigo=<?= $artigo['idArtigo'] ?>"> <?= htmlspecialchars($artigo['titulo']) ?>
             </a>
             <p><?= htmlspecialchars($artigo['autores']) ?> - <?= date("d/m/Y", strtotime($artigo['dataPublicacao'])) ?></p>
           </div>

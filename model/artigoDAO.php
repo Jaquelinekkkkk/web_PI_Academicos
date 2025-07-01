@@ -13,6 +13,19 @@ function buscarArtigos() {
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
+function buscarArtigosProjeto($idProjeto) {
+    $sql = "SELECT idArtigo, titulo, autores, dataPublicacao 
+            FROM academicos.artigos 
+            WHERE idProjeto = :idProjeto 
+            order by dataPublicacao DESC;";
+
+    $pdo = conectar();
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':idProjeto', $idProjeto, PDO::PARAM_INT);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
 function buscarDetalhesArtigo($idArtigo) {
     
     $sql = "SELECT artigos.*, projetos.tituloProjeto
@@ -30,3 +43,15 @@ function buscarDetalhesArtigo($idArtigo) {
     return $stmt->fetch(PDO::FETCH_ASSOC);
 
 }
+
+function buscarArtigosFiltrados($termo) {
+  $pdo = conectar();
+  $sql = "SELECT * FROM artigos WHERE titulo LIKE :termo OR autores LIKE :termo";
+  $stmt = $pdo->prepare($sql);
+  $termo = '%' . $termo . '%';
+  $stmt->bindParam(':termo', $termo, PDO::PARAM_STR);
+  $stmt->execute();
+  return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+

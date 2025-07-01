@@ -121,10 +121,18 @@
 
 <div class="superor">
     <div class="top-barra">
-    
+
+    <form method="GET" action="/WEB_PI_Academicos/view/resultados.php">
+
         <div class="pesquisa-box">
-        <label for="name"></label>
-        <input type="text" id="name" name="name" size="30" style="height: 30px; border: white" /><img src="../imagens/lupa.png" alt=""></div>
+
+        <input type="text" name="busca" placeholder="Pesquisar..." style="height: 30px; border: none;" />
+        <button type="submit" style="background: none; border: none;">
+        <img src="../imagens/lupa.png" alt="Buscar" />
+</button>
+      </div>
+    </form>
+
 
         <img class="logo" src="../imagens/logo.png" alt="Logo">
         
