@@ -35,11 +35,7 @@ $nomeArea = buscarNomeDaArea($idArea);
       box-sizing: border-box;
     }
 
-    .linhah {
-      height: 2px;
-      width: 40%;
-      background-color: #386641;
-    }
+    
 
     .titulo-texto {
       color: #386641;
@@ -88,15 +84,39 @@ $nomeArea = buscarNomeDaArea($idArea);
       font-style: italic;
       color: #444;
     }
+    
+  .separador-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+    gap: 10px;
+    white-space: nowrap; /* Impede quebra de linha */
+    overflow-x: auto; /* Permite rolagem horizontal se necessário */
+  }
+
+  .div-traco {
+    flex: 1;
+    height: 2px;
+    background-color: black;
+    min-width: 30px;
+  }
+
+  .campus-title {
+    font-weight: bold;
+    font-size: 18px;
+    color: #386641;
+    white-space: nowrap; /* Garante que o texto fique numa linha só */
+  }
   </style>
 </head>
 <body>
 
-  <div id="titulo">
-    <div class="linhah"></div>
-    <h3 class="titulo-texto">Projetos da Área: <?= htmlspecialchars($nomeArea) ?></h3>
-    <div class="linhah"></div>
-  </div>
+<div class="separador-container">
+        <div class="div-traco"></div>
+        <span class="campus-title">PROJETOS DA ÁREA</span>
+        <div class="div-traco"></div>
+    </div>
 
   <?php if (!empty($projetos)): ?>
     <?php foreach ($projetos as $proj): ?>

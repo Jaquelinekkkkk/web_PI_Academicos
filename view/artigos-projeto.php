@@ -207,7 +207,7 @@ $paginaAtual = basename($_SERVER['PHP_SELF']);
   </div>
 
   <section class="artigos">
-    <h3 style="color: #fff;">📄 Artigos do Projeto</h3>
+    <h3 style="color: #fff;"> Artigos do Projeto</h3>
     <div class="vertical-links">
       <?php if (!empty($artigos) && is_array($artigos)): ?>
         <?php foreach ($artigos as $artigo): ?>

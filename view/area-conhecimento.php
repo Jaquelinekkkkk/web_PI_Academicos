@@ -40,20 +40,9 @@ $areas = buscarTodasAsAreasSimples();
     }
 
     
-#titulo {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: 15px 20px;
-  box-sizing: border-box;
-}
 
-.linhah {
-  height: 2px;
-  width: 40%; /* ou ajuste para 35%, se ainda estiver apertado */
-  background-color: #386641;
-}
+
+
 
 .titulo-texto {
   color: #386641;
@@ -62,14 +51,37 @@ $areas = buscarTodasAsAreasSimples();
   margin: 0;
   white-space: nowrap; /* 👈 impede quebra de linha */
 }
+.separador-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+    gap: 10px;
+    white-space: nowrap; /* Impede quebra de linha */
+    overflow-x: auto; /* Permite rolagem horizontal se necessário */
+  }
+
+  .div-traco {
+    flex: 1;
+    height: 2px;
+    background-color: black;
+    min-width: 30px;
+  }
+
+  .campus-title {
+    font-weight: bold;
+    font-size: 18px;
+    color: #386641;
+    white-space: nowrap; /* Garante que o texto fique numa linha só */
+  }
   </style>
 </head>
 <body>
-<div id="titulo">
-                <div class="linhah"></div>
-                <h3 class="titulo-texto">Áreas de Conhecimento</h3>
-                <div class="linhah"></div>
-             </div>
+<div class="separador-container">
+        <div class="div-traco"></div>
+        <span class="campus-title">ÁREAS DE CONHECIMENTO</span>
+        <div class="div-traco"></div>
+    </div>
 
   <?php foreach ($areas as $area): ?>
     <div class="area-item">

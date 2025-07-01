@@ -69,23 +69,29 @@
             font-weight: bold;
         }
         .separador-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 20px 0;/*espaco externo*/
-            gap: 10px;/*espaco intero*/
-        }
-        .div-traco {
-            width: 100%;
-            height: 2px;
-            background-color:black;
-        }
-        .campus-title {
-            font-weight: bold;
-            font-size: 18px;
-            color: #386641;
-            
-        }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+    gap: 10px;
+    white-space: nowrap; /* Impede quebra de linha */
+    overflow-x: auto; /* Permite rolagem horizontal se necessário */
+  }
+
+  .div-traco {
+    flex: 1;
+    height: 2px;
+    background-color: black;
+    min-width: 30px;
+  }
+
+  .campus-title {
+    font-weight: bold;
+    font-size: 18px;
+    color: #386641;
+    white-space: nowrap; /* Garante que o texto fique numa linha só */
+  }
+
         .vertical-links {
             display: flex;
             flex-direction: column;
@@ -140,7 +146,7 @@ $artigo = buscarDetalhesArtigo($idArtigo);
 
     <div class="separador-container">
         <div class="div-traco"></div>
-        <span class="campus-title">ARTIGOS</span>
+        <span class="campus-title">DETALHES DE ARTIGOS</span>
         <div class="div-traco"></div>
     </div>
 

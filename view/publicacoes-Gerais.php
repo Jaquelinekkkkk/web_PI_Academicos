@@ -23,13 +23,7 @@ $postagens = buscarPostagensGerais();
       margin: auto;
       padding: 20px;
     }
-
-    /* .publicacoes-gerais h1 {
-      text-align: center;
-      color: #386641;
-      margin-bottom: 30px;
-      font-size: 28px;
-    } */
+    
 
     .grid-postagens {
       display: grid;
@@ -76,21 +70,7 @@ $postagens = buscarPostagensGerais();
       color: #444;
       padding: 40px 0;
     }
-       
-#titulo {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: 15px 20px;
-  box-sizing: border-box;
-}
-
-.linhah {
-  height: 2px;
-  width: 40%; /* ou ajuste para 35%, se ainda estiver apertado */
-  background-color: #386641;
-}
+    
 
 .titulo-texto {
   color: #386641;
@@ -99,16 +79,49 @@ $postagens = buscarPostagensGerais();
   margin: 0;
   white-space: nowrap; /* 👈 impede quebra de linha */
 }
+
+
+  .separador-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+    gap: 10px;
+    white-space: nowrap; /* Impede quebra de linha */
+    overflow-x: auto; /* Permite rolagem horizontal se necessário */
+  }
+
+  .div-traco {
+    flex: 1;
+    height: 2px;
+    background-color: black;
+    min-width: 30px;
+  }
+
+  .campus-title {
+    font-weight: bold;
+    font-size: 18px;
+    color: #386641;
+    white-space: nowrap; /* Garante que o texto fique numa linha só */
+  }
+       
+
+
+
+</style>
   </style>
 </head>
 <body>
-
+<div class="separador-container">
+        <div class="div-traco"></div>
+        <span class="campus-title">PUBLICAÇÕES GERAIS</span>
+        <div class="div-traco"></div>
+    </div>
 <section class="publicacoes-gerais">
-  <div id="titulo">
-                <div class="linhah"></div>
-                <h3 class="titulo-texto">Postagens Gerais</h3>
-                <div class="linhah"></div>
-             </div>
+
+
+
+  
 
   <?php if (!empty($postagens) && is_array($postagens)): ?>
     <div class="grid-postagens">
