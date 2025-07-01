@@ -24,12 +24,12 @@ $postagens = buscarPostagensGerais();
       padding: 20px;
     }
 
-    .publicacoes-gerais h1 {
+    /* .publicacoes-gerais h1 {
       text-align: center;
       color: #386641;
       margin-bottom: 30px;
       font-size: 28px;
-    }
+    } */
 
     .grid-postagens {
       display: grid;
@@ -76,12 +76,39 @@ $postagens = buscarPostagensGerais();
       color: #444;
       padding: 40px 0;
     }
+       
+#titulo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 15px 20px;
+  box-sizing: border-box;
+}
+
+.linhah {
+  height: 2px;
+  width: 40%; /* ou ajuste para 35%, se ainda estiver apertado */
+  background-color: #386641;
+}
+
+.titulo-texto {
+  color: #386641;
+  font-size: 22px;
+  font-weight: bold;
+  margin: 0;
+  white-space: nowrap; /* 👈 impede quebra de linha */
+}
   </style>
 </head>
 <body>
 
 <section class="publicacoes-gerais">
-  <h1>Postagens Gerais</h1>
+  <div id="titulo">
+                <div class="linhah"></div>
+                <h3 class="titulo-texto">Postagens Gerais</h3>
+                <div class="linhah"></div>
+             </div>
 
   <?php if (!empty($postagens) && is_array($postagens)): ?>
     <div class="grid-postagens">

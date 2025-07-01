@@ -139,7 +139,7 @@
     </div>
 
     <div class="horizontal-links">
-        <a href="../view/tela-noticias.php">Início</a>
+        <a href="../view/inicio.php">Início</a>
         <div class="div-traco-vertical"></div>
 
         <a href="../view/tela-artigos.php">Artigos</a>
