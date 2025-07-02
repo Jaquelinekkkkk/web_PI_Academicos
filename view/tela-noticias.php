@@ -1,4 +1,8 @@
-
+<?php
+include_once("header.php");
+include_once("../model/noticiaDAO.php"); 
+$noticias = buscarNoticias();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -225,15 +229,40 @@ grid-template-rows: repeat(auto-fill, 1fr);
 
 
 }
+.separador-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+    gap: 10px;
+    white-space: nowrap; /* Impede quebra de linha */
+    overflow-x: auto; /* Permite rolagem horizontal se necessário */
+  }
 
+  .div-traco {
+    flex: 1;
+    height: 2px;
+    background-color: black;
+    min-width: 30px;
+  }
+
+  .campus-title {
+    font-weight: bold;
+    font-size: 18px;
+    color: #386641;
+    white-space: nowrap; /* Garante que o texto fique numa linha só */
+  }
 </style>
 <body>
+    <div class="separador-container">
+        <div class="div-traco"></div>
+        <span class="campus-title">NOTÍCIAS</span>
+        <div class="div-traco"></div>
+    </div>
 <?php
 
 
-include_once("header.php");
-include_once("../model/noticiaDAO.php"); 
-$noticias = buscarNoticias();
+
 
 
 ?>
@@ -241,11 +270,7 @@ $noticias = buscarNoticias();
     <div id="container">
 
         <div id="inferior">
-            <div id="titulo">
-                <div class="linhah"></div>
-                <h3>NOTÍCIAS</h3>
-                <div class="linhah"></div>
-             </div>
+            
              <div id="noticias">
 
                 <?php foreach ($noticias as $noticia): ?>

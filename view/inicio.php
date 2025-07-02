@@ -106,6 +106,7 @@ $postagens = buscarPostagensGerais();
     background-color: #386641;
     border-radius: 10px;
     padding: 15px;
+    max-width:70%;/*02/07/2025 jaque arrumando tamanho da div verde */
     box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
   }
 

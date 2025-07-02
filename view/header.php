@@ -6,6 +6,29 @@
     <title>Document</title>
     </head>
     <style>
+        /* Scrollbar personalizada para WebKit (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e0f5e9;  /* Trilha da barra: verde clarinho */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #386641;  /* Pega padrão verde */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #386641;  /* Verde escuro no hover */
+}
+
+/* Scrollbar personalizada para Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #386641 #e0f5e9;  /* polegar | trilha */
+}
         body {
             background-color: #ECECEC;
             font-family: Courier;
