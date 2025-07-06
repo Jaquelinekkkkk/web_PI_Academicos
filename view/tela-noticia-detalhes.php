@@ -14,10 +14,11 @@ $noticia = buscarDetalhesNoticia($idNoticia);
     <title>Document</title>
 </head>
 <style>   
-body{
-    font-family: "Courier Prime Serif", "Courier New", Courier, monospace;
-    font-weight: bold;
-} 
+
+         body {
+            background-color: #ECECEC;
+            font-family: Courier;
+        }
 p{
     margin:40px;
     font-weight:bold;

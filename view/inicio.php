@@ -12,11 +12,10 @@ $postagens = buscarPostagensGerais();
     box-sizing: border-box;
   }
 
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color:#ECECEC ;
-  }
+         body {
+            background-color: #ECECEC;
+            font-family: Courier;
+        }
 
   /* Área principal abaixo do header */
   .main-content {
@@ -87,6 +86,7 @@ $postagens = buscarPostagensGerais();
   justify-content: center; /* Garante que os itens sejam centralizados */
   align-items: flex-start; /* Garante que o conteúdo comece do topo */
 }
+
 
  
   

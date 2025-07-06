@@ -31,12 +31,11 @@ $paginaAtual = basename($_SERVER['PHP_SELF']);
   <meta charset="UTF-8">
   <title><?= htmlspecialchars($projeto['tituloProjeto']) ?></title>
   <style>
-    body {
-      background-color: #ECECEC;
-      font-family: "Courier New", monospace;
-      margin: 0;
-      padding: 10px;
-    }
+   
+         body {
+            background-color: #ECECEC;
+            font-family: Courier;
+        }
 
     .main-wrapper {
       display: flex;

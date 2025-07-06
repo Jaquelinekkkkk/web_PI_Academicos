@@ -11,12 +11,12 @@ $postagens = buscarPostagensGerais();
   <meta charset="UTF-8">
   <title>Postagens Gerais</title>
   <style>
-    body {
-      background-color: #ECECEC;
-      font-family: "Courier New", monospace;
-      margin: 0;
-      padding: 20px;
-    }
+   
+         body {
+            background-color: #ECECEC;
+            font-family: Courier;
+        }
+
 
     .publicacoes-gerais {
       max-width: 1200px;

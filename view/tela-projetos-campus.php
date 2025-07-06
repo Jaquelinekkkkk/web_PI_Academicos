@@ -11,11 +11,11 @@ $projetos = buscarProjetosPorCampus($idCampus);
   <meta charset="UTF-8">
   <title>Projetos do Campus</title>
   <style>
-    body {
-      background-color: #ECECEC;
-      font-family: "Courier Prime Serif", Courier, monospace;
-      font-weight: bold;
-    }
+   
+         body {
+            background-color: #ECECEC;
+            font-family: Courier;
+        }
 
     .titulo-container {
       display: flex;

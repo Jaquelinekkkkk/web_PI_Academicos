@@ -11,12 +11,10 @@ $areas = buscarTodasAsAreasSimples();
   <meta charset="UTF-8">
   <title>Áreas de Conhecimento</title>
   <style>
-    body {
-      background-color: #ECECEC;
-      font-family: Courier;
-      margin: 0;
-      padding: 0;
-    }
+         body {
+            background-color: #ECECEC;
+            font-family: Courier;
+        }
 
     .area-item {
       padding: 15px 20px;

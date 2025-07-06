@@ -19,12 +19,11 @@ $nomeArea = buscarNomeDaArea($idArea);
   <meta charset="UTF-8">
   <title>Projetos da Área</title>
   <style>
-    body {
-      background-color: #ECECEC;
-      font-family: Courier;
-      margin: 0;
-      padding: 0;
-    }
+    
+         body {
+            background-color: #ECECEC;
+            font-family: Courier;
+        }
 
     #titulo {
       display: flex;

@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tela Principal</title>
     <style>
-        body {
+       
+         body {
             background-color: #ECECEC;
             font-family: Courier;
         }
+
         .superor{
             background-color: #BBC8BE;
             border-radius: 5px;
