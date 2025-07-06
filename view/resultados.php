@@ -40,7 +40,7 @@ if ($termo !== '') {
       <?php endforeach; ?>
     </ul>
     <?php else: ?>
-    <p>Nenhum resultado encontrado.</p>
+    
   <?php endif; ?>
 
   <?php if (count($projetos) > 0): ?>
@@ -55,7 +55,7 @@ if ($termo !== '') {
       <?php endforeach; ?>
     </ul>
   <?php else: ?>
-    <p>Nenhum resultado encontrado.</p>
+    
   <?php endif; ?>
 
 
@@ -71,7 +71,7 @@ if ($termo !== '') {
       <?php endforeach; ?>
     </ul>
   <?php else: ?>
-    <p>Nenhum resultado encontrado.</p>
+
   <?php endif; ?>
 
 

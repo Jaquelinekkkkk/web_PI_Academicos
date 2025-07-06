@@ -14,7 +14,7 @@ function buscarProjetosPorCampus($idCampus) {
         LEFT JOIN academicos.fotos_perfil_projeto f ON f.idProjeto = p.idProjeto
         LEFT JOIN academicos.areas_projetos ap ON ap.idProjeto = p.idProjeto
         LEFT JOIN academicos.areasdeconhecimento a ON a.idArea = ap.idArea
-        WHERE p.idCampus = :idCampus";
+        WHERE p.idCampus = :idCampus  AND emAndamento = 1";
    
 
     $pdo = conectar();
@@ -42,7 +42,7 @@ function buscarDetalhesProjeto($idProjeto) {
             LEFT JOIN academicos.fotos_perfil_projeto f ON f.idProjeto = p.idProjeto
             LEFT JOIN academicos.areas_projetos ap ON ap.idProjeto = p.idProjeto
             LEFT JOIN academicos.areasdeconhecimento a ON a.idArea = ap.idArea
-            WHERE p.idProjeto = :idProjeto";
+            WHERE p.idProjeto = :idProjeto AND emAndamento = 1";
 
     $pdo = conectar();
     $stmt = $pdo->prepare($sql);
