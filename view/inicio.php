@@ -79,11 +79,14 @@ $postagens = buscarPostagensGerais();
   }
 
   .coluna-postagens {
-    flex: 1;
-    padding: 30px;
-    background-color: #e9f0ea;
-    overflow-y: auto;
-  }
+  flex: 1;
+  padding: 30px;
+  background-color: #e9f0ea;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center; /* Garante que os itens sejam centralizados */
+  align-items: flex-start; /* Garante que o conteúdo comece do topo */
+}
 
  
   
@@ -102,13 +105,15 @@ $postagens = buscarPostagensGerais();
   object-fit: cover;
 }
 
-  .postagem {
-    background-color: #386641;
-    border-radius: 10px;
-    padding: 15px;
-    max-width:70%;/*02/07/2025 jaque arrumando tamanho da div verde */
-    box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
-  }
+.postagem {
+  background-color: #386641;
+  border-radius: 10px;
+  padding: 15px;
+  width: 80%; /* Substituímos max-width por width */
+  margin: 0 auto; /* Centraliza o conteúdo */
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+}
+
 
  
 
