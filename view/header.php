@@ -37,6 +37,7 @@ html {
             background-color: #BBC8BE;
             border-radius: 5px;
             padding: 5px;/*espaco interno*/
+            
 
         }
         .top-barra {        /*o primeiro elemento da claase barra fica a esquerda e o segundo a direita*/
@@ -124,12 +125,13 @@ html {
         a{
             font-weight: bold;
         }
-        img {
-            
-
-            /*  filter: invert(2);<p>Pesquisar...</p>*/
-           /* border-radius: 50%;*/
-        }
+        .lupa {
+           
+  width: 20px;
+  height: 20px;
+  object-fit: contain; /* ou "cover", dependendo do efeito desejado */
+       }
+     
         .div-traco-vertical {
     width: 5px; /* Define largura mínima para criar o divisor vertical */
     height: 30px; /* Ocupa toda a altura dos links */
@@ -151,7 +153,7 @@ html {
 
         <input type="text" name="busca" placeholder="Pesquisar..." style="height: 30px; border: none;" />
         <button type="submit" style="background: none; border: none;">
-        <img src="../imagens/lupa.png" alt="Buscar" />
+        <img class="lupa" src="../imagens/lupa.png" alt="Buscar" />
 </button>
       </div>
     </form>
